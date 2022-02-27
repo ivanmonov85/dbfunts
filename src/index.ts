@@ -2,11 +2,12 @@ import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import { usersRouter } from "./routers/users.router";
+import { usersController } from "./controllers/users.controller";
 import { errorHandler } from "./middleware/error.middleware";
 import { notFoundHandler } from "./middleware/not-found.middleware";
+import { testDbConnection } from "./dbconfig/dbconfig";
 
-// Load local environmental variables
+// Load environmental variables
 dotenv.config();
 
 // =Validate App Variables=
@@ -23,10 +24,12 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/users", usersController);
 
 app.use(errorHandler);
 app.use(notFoundHandler);
+
+testDbConnection();
 
 // =Server Activation=
 app.listen(PORT, () => {

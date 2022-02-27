@@ -1,0 +1,59 @@
+version: '3.8'
+
+networks:
+  infrastructure:
+    name: dbfunts_infrastructure
+    driver: bridge
+
+services:
+  dbfunts-api:
+    container_name: dbfunts_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./src:/home/node/app/src
+      - ./nodemon.json:/home/node/app/nodemon.json
+    expose:
+      - '7000'
+    ports:
+      - '7000:7000'
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: development
+    networks:
+      - infrastructure
+    command: npm run dev
+
+  postgres:
+    container_name: dbfunts_postgres
+    image: postgres:13.4
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Sl0jnaP@rola123
+      POSTGRES_DB: dbfunts
+    volumes:
+      - postgres:/data/postgres
+      - postgres_lib:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - infrastructure
+    restart: always
+
+  adminer:
+    container_name: dbfunts_adminer
+    image: adminer:4.7.8
+    ports:
+      - 7019:8080
+    networks:
+      - infrastructure
+    restart: always
+
+volumes:
+  postgres:
+    name: dbfunts_postgres
+  postgres_lib:
+    name: dbfunts_postgres_lib

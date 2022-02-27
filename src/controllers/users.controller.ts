@@ -1,17 +1,19 @@
 import express, { Request, Response } from "express";
 import UserDataService from "../services/users.service";
-import { UserItem, User } from "../models/user.interface";
+import { User } from "../models/user.interface";
+import { checkJwt } from "../middleware/auth.middleware";
 
 // =Router Definition=
-export const usersRouter = express.Router();
+export const usersController = express.Router();
 
 // =Controller Definitions=
 
+// Public API endpoints
 // GET users
-usersRouter.get("/", async (req: Request, res: Response) => {
+usersController.get("/", async (req: Request, res: Response) => {
     try {
         const userDataService = await UserDataService.build();
-        const users: UserItem[] = await userDataService.list();
+        const users: User[] = await userDataService.list();
 
         res.status(200).send(users);
 
@@ -26,14 +28,17 @@ usersRouter.get("/", async (req: Request, res: Response) => {
     }
 });
 
+// Protected API endpoints
+usersController.use(checkJwt);
+
 // GET users/:id
-usersRouter.get("/:id", async (req: Request, res: Response) => {
+usersController.get("/:id", async (req: Request, res: Response) => {
   
     const id: number = parseInt(req.params.id, 10);
 
     try {
         const userDataService = await UserDataService.build();
-        const user: UserItem = await userDataService.find(id);
+        const user = await userDataService.find(id);
         if (user) {
             return res.status(200).send(user);
         }
@@ -51,8 +56,11 @@ usersRouter.get("/:id", async (req: Request, res: Response) => {
     }
 });
 
+// Protected API endpoints
+usersController.use(checkJwt);
+
 // POST users
-usersRouter.post("/", async (req: Request, res: Response) => {
+usersController.post("/", async (req: Request, res: Response) => {
     try {
         const userDataService = await UserDataService.build();
         const user: User = req.body;
@@ -72,13 +80,13 @@ usersRouter.post("/", async (req: Request, res: Response) => {
 });
 
 // PUT users/:id
-usersRouter.put("/:id", async (req: Request, res: Response) => {
+usersController.put("/:id", async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
   
     try {
         const userDataService = await UserDataService.build();
-        const user: UserItem = req.body;
-        const existingUser: UserItem = await userDataService.find(id);
+        const user: User = req.body;
+        const existingUser = await userDataService.find(id);
   
         if (existingUser) {
             const updatedUser = await userDataService.update(id, user);
@@ -102,7 +110,7 @@ usersRouter.put("/:id", async (req: Request, res: Response) => {
 });
 
 // DELETE users/:id
-usersRouter.delete("/:id", async (req: Request, res: Response) => {
+usersController.delete("/:id", async (req: Request, res: Response) => {
     try {
         const userDataService = await UserDataService.build();
         const id: number = parseInt(req.params.id, 10);
