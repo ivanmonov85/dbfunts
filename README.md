@@ -22,7 +22,7 @@ Requirements:
 -- start server in container
 -- start fe in container
 
-## Direcotry Layout
+## Directory Layout
 ```
 README.md              --> Project documentation (this file)
 
