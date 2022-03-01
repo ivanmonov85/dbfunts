@@ -52,6 +52,24 @@ services:
       - infrastructure
     restart: always
 
+  dbfunts-client:
+    container_name: dbfunts_client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./client/app:/home/node/app/app
+    expose:
+      - '8000'
+    ports:
+      - '8000:8000'
+    environment:
+      NODE_ENV: development
+    networks:
+      - infrastructure
+    command: npm run start-docker
+
 volumes:
   postgres:
     name: dbfunts_postgres

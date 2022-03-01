@@ -1,0 +1,14 @@
+<a href="#" ng-click="addNewUser()">Create</a>
+<table ng-table="tableParams">
+    <tr ng-repeat="user in $data track by user.id">
+        <td data-title="'Name'" sortable="'name'">{{user.name}}</td>
+		<td data-title="'Username'" sortable="'username'">{{user.username}}</td>
+		<td data-title="'Email'" sortable="'email'">{{user.email}}</td>
+		<td data-title="'Phone'" sortable="'phone'">{{user.phone}}</td>
+		<td data-title="'Website'" sortable="'website'">{{user.website}}</td>
+        <td data-title="'Actions'">
+            <a href="#" ng-click="editUser(user) ">Edit</a>
+            <a href="#" ng-click="removeUser(user.id, user.name)">Delete</a>
+        </td>
+    </tr>
+</table>

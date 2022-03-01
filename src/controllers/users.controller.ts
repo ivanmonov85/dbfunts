@@ -9,6 +9,10 @@ export const usersController = express.Router();
 // =Controller Definitions=
 
 // Public API endpoints
+//..
+
+// Protected API endpoints
+usersController.use(checkJwt);
 // GET users
 usersController.get("/", async (req: Request, res: Response) => {
     try {
@@ -28,8 +32,7 @@ usersController.get("/", async (req: Request, res: Response) => {
     }
 });
 
-// Protected API endpoints
-usersController.use(checkJwt);
+
 
 // GET users/:id
 usersController.get("/:id", async (req: Request, res: Response) => {
@@ -55,9 +58,6 @@ usersController.get("/:id", async (req: Request, res: Response) => {
         res.status(500).send(errorMessage);
     }
 });
-
-// Protected API endpoints
-usersController.use(checkJwt);
 
 // POST users
 usersController.post("/", async (req: Request, res: Response) => {

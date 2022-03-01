@@ -1,0 +1,22 @@
+{
+  "name": "dbfunts-app",
+  "version": "1.0.0",
+  "description": "DBFunTS API Client",
+  "private": true,
+  "license": "ISC",
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 --cors -c-1 ./app",
+    "start-docker": "http-server -p 8000 --cors ./app",
+    "start-node": "node app/app.js"
+  },
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-loader": "^1.8.2",
+    "angular-route": "^1.8.2",
+    "ng-dialog": "^1.4.0",
+    "ngstorage": "^0.3.11"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.0"
+  }
+}
