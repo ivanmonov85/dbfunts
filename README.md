@@ -69,7 +69,16 @@ The real message is logged in the console for troubleshooting.
 
 - Data object model
 1. *User*
-
+```
+{
+  id:        [bigint]  Unique identifier
+  name:      [string]  Name
+  username:  [string]  Usaername (required)
+  email:     [string]  Email (required)
+  phone:     [string]  Phone
+  website:   [string]  Website
+}
+```
 ### Database and Infrastructure
 - [`PostgreSQL`](https://hub.docker.com/_/postgres) v13.6 'postgres' image from DockerHub
 - [Adminer](https://hub.docker.com/_/adminer) UI v4.7.8 used for DB management
