@@ -81,8 +81,7 @@ The real message is logged in the console for troubleshooting.
 ```
 ### Database and Infrastructure
 - [`PostgreSQL`](https://www.postgresql.org/) '[postgres](https://hub.docker.com/_/postgres)' v13.6 image from DockerHub
-- [Adminer](https://hub.docker.com/_/adminer) UI v4.7.8 imagenpm http-server
- used for DB management
+- [Adminer](https://hub.docker.com/_/adminer) UI v4.7.8 image used for DB management
 - [Sequelize](https://sequelize.org/) v6 is used as ORM for Postgres
 
 **Note:** Database migration scripts are not automated in this release and must be run manually.
