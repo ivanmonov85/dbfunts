@@ -43,16 +43,16 @@ tsconfig.json          --> TypeScript configuration
 docker-compose.yml     --> Containers configuration
 Makefile               --> scripts for building images. [make up / make down]
 
-postman/               --> Postman v2.1 environment and collection for testing
+postman/               --> Postman environment and collection for testing
 ```
 
 ## Step 1. API Implementation
-- `Node.js` v16.14.0 LTS
+- [`Node.js`](https://nodejs.org) v16.14.0 LTS
 
 - [Express](https://expressjs.com/) framework is used to serve web pages and implement an *RESTful* API.
 
 - Authentication Middleware:
-Using **Auth0** as a flexible, drop-in solution for authentication and authorization services.
+Using [**Auth0**](https://auth0.com/) as a flexible, drop-in solution for authentication and authorization services.
 
 Get Auth Token Command:
 ```
@@ -70,13 +70,15 @@ The real message is logged in the console for troubleshooting.
 - Data object model
 1. *User*
 
-### Database
-- `Postgre`
-- Sequelize v6 is used as ORM for Postgres
-- **Note:** Migration scripts are not automated in this release and must be run manually.
+### Database and Infrastructure
+- [`PostgreSQL`](https://hub.docker.com/_/postgres) v13.6 'postgres' image from DockerHub
+- [`Adminer`](https://hub.docker.com/_/adminer) UI v4.7.8 used for DB management
+- [Sequelize](https://sequelize.org/) v6 is used as ORM for Postgres
+
+**Note:** Database migration scripts are not automated in this release and must be run manually.
 
 ### Testing
-- `Postman` v9.14 was used for testing and used collection and environment are exported to the 'postman' folder.
+- [`Postman`](https://www.postman.com/) v9.14 was used for testing and used collection and environment are exported in v2.1 format to the 'postman' folder.
 
 The Authentication is **automated** in the 'Get Auth Token' action which copies the received token in the {{authorization}} environment variable and is used in the other actions.
 
