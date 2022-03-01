@@ -80,7 +80,7 @@ The real message is logged in the console for troubleshooting.
 ### Testing
 - [Postman](https://www.postman.com/) v9.14 was used for testing and used collection and environment are exported in v2.1 format to the 'postman' folder.
 
-The Authentication is **automated** in the 'Get Auth Token' action which copies the received token in the {{authorization}} environment variable and is used in the other actions.
+The Authorization is **automated** in the 'Get Auth Token' action which copies the received token in the {{authorization}} environment variable and is used in the other actions.
 
 
 ## Step 2. Client Implementation
