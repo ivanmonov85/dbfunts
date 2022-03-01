@@ -80,9 +80,9 @@ The real message is logged in the console for troubleshooting.
 }
 ```
 ### Database and Infrastructure
-- [`PostgreSQL`](https://www.postgresql.org/) '[postgres](https://hub.docker.com/_/postgres)' v13.6 image from DockerHub
-- [Adminer](https://hub.docker.com/_/adminer) UI v4.7.8 image used for DB management
-- [Sequelize](https://sequelize.org/) v6 is used as ORM for Postgres
+- [`PostgreSQL`](https://www.postgresql.org/) '[postgres](https://hub.docker.com/_/postgres)' v13.6 image from DockerHub.
+- [Adminer](https://hub.docker.com/_/adminer) UI v4.7.8 image used for DB management.
+- [Sequelize](https://sequelize.org/) v6 is used as ORM for Postgres.
 
 **Note:** Database migration scripts are not automated in this release and must be run manually.
 
@@ -94,18 +94,18 @@ The Authorization is **automated** in the 'Get Auth Token' action which copies t
 
 ## Step 2. Client Implementation
 - [`AngularJS`](https://angularjs.org/) v1.8.2, using NPM web server [http-server](https://www.npmjs.com/package/http-server) v14.1.0 .
-Also used are: [_ngRoute_](https://www.npmjs.com/package/angular-route), [_ngStorage_](https://www.npmjs.com/package/ngstorage), [_ngDialog_](https://github.com/likeastore/ngDialog), [_ngTable_](https://github.com/esvit/ng-table)
+Also used modules are: [_ngRoute_](https://www.npmjs.com/package/angular-route), [_ngStorage_](https://www.npmjs.com/package/ngstorage), [_ngDialog_](https://github.com/likeastore/ngDialog), [_ngTable_](https://github.com/esvit/ng-table)
 
 - Error Handling:
 Server error responses are handled globally, instead of per request, with registered 'responseError' interceptor to the $httpProvider.
 
 
 ## Step 3. Containerization
-- `Docker` v4.4.4 (Docker Engine v20.10.12)
+- [`Docker`](https://www.docker.com/) v4.4.4 (Docker Engine v20.10.12)
 
 Makefile used for building the images described in the _docker-compose.yml_.
-- make up - docker-compose build + docker-compose up -d
-- make down - docker-compose down
+- _make up_ - docker-compose build + docker-compose up -d
+- _make down_ - docker-compose down
 
 
 Backend BaseUrl: http://localhost:7000/api/v1
