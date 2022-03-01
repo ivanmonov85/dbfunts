@@ -1,7 +1,7 @@
 # dbfunts
 Simple DB CRUD API + Client
 
-[![Build Status](https://travis-ci.org/ivanmonov85/dbfunts.svg?branch=master)](https://travis-ci.org/ivanmonov85/dbfunts) [![HitCount](https://hits.dwyl.com/ivanmonov85/dbfunts.svg?style=flat-square&show=unique)](http://hits.dwyl.com/ivanmonov85/dbfunts)
+[![Build Status](https://travis-ci.org/ivanmonov85/dbfunts.svg?branch=master)](https://travis-ci.org/ivanmonov85/dbfunts) [![HitCount](https://hits.dwyl.com/ivanmonov85/dbfunts.svg?style=flat&show=unique)](http://hits.dwyl.com/ivanmonov85/dbfunts)
 
 ## Goal
 _Create simple application that can Add, Update and Remove records from DB storage._
