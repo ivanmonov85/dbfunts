@@ -52,7 +52,7 @@ postman/               --> Postman v2.1 environment and collection for testing
 - [Express](https://expressjs.com/) framework is used to serve web pages and implement an *RESTful* API.
 
 - Authentication Middleware:
-Using `Auth0` as a flexible, drop-in solution for authentication and authorization services.
+Using **Auth0** as a flexible, drop-in solution for authentication and authorization services.
 
 Get Auth Token Command:
 ```
@@ -68,15 +68,15 @@ Middleware function using error middleware wraps the error and hides the real me
 The real message is logged in the console for troubleshooting.
 
 - Data object model
-1. **User**
+1. *User*
 
 ### Database
 - `Postgre`
 - Sequelize v6 is used as ORM for Postgres
-
+- **Note:** Migrations scrips are not automated in this release and must be run manually.
 
 ## Step 2. Client Implementation
-- `AngularJS` v1.8.2, using development web server (Node.js [http-server][http-server]).
+- `AngularJS` v1.8.2, using development web server (Node.js http-server).
 Also used are: 'ngRoute', 'ngStorage', 'ngDialog', 'ngTable'
 
 - Error Handling:
@@ -85,12 +85,14 @@ Server error responses are handled globally, instead of per request, with regist
 
 ## Step 3. Containerization
 - `Docker` v4.4.4 (Docker Engine v20.10.12)
+
 Makefile used for building the images described in the _docker-compose.yml_.
 - make up - docker-compose build + docker-compose up -d
 - make down - docker-compose down
 
 
 Backend BaseUrl: http://localhost:7000/api/v1
+
 Frontend Url:    http://localhost:8000
 
 
