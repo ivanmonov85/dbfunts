@@ -46,6 +46,7 @@
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.0.1/css/ngDialog.min.css">
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.0.1/css/ngDialog-theme-default.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.0.1/css/ngDialog-theme-plain.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.0.1/js/ngDialog.min.js"></script>
 
 		<!-- Load environment variables -->
@@ -53,48 +54,6 @@
 
 		<!-- Load AngularJS application -->
 		<script src="app.js"></script>
-
-		<script type="text/ng-template" id="templateId">
-			<form name="form">
-				<div class="ngdialog-message">
-					<h3>{{user.username}}</h3>
-					<div class="row">
-						<label>Name:<input type="text" name="name" ng-model="user.name" required ng-minlength="3" ng-maxlength="25"/></label>
-						<div role="alert">
-							<span class="error" ng-show="form.name.$error.required">
-								Required
-							</span>
-							<span class="error" ng-show="form.name.$error.minlength">
-								Too short
-							</span>
-							<span class="error" ng-show="form.name.$error.maxlength">
-								Too long
-							</span>
-						</div>
-					</div>
-
-					<div class="row">
-						<label>Email:<input type="text" name="email" ng-model="user.email" required/></label>
-						<div role="alert">
-							<span class="error" ng-show="form.email.$error.required">
-								Required
-							</span>
-						</div>
-					</div>
-
-					<div class="row">
-						<label>Phone:<input type="text" name="phone" ng-model="user.phone"/></label>
-					</div>
-
-					<div class="row">
-						<label>Website:<input type="text" name="website" ng-model="user.website"/></label>
-					</div>
-				</div>
-				<div class="ngdialog-buttons mt">
-					<button ng-disabled="form.$invalid" ng-click="save()">Save</button>
-				</div>
-			</form>
-		</script>
 
 		<script src="services/auth.service.js"></script>
 

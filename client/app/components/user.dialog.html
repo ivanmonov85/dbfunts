@@ -1,39 +1,36 @@
 <form name="form">
     <div class="ngdialog-message">
-        <h3>{{user.username}}</h3>
-        <div class="row">
-            <label>Name:<input type="text" name="name" ng-model="user.name" required ng-minlength="3" ng-maxlength="25"/></label>
+        <h3 id="header">{{user.username}}</h3>
+        <p>
+            <label>Name:<input type="text" name="name" ng-model="user.name"/></label>
+        </p>
+        <p>
+            <label>Username:<input type="text" name="username" ng-model="user.username" required ng-minlength="3" ng-maxlength="25"/></label>
+            <!--
             <div role="alert">
-                <span class="error" ng-show="form.name.$error.required">
+                <span class="error" ng-show="form.username.$error.required">
                     Required
                 </span>
-                <span class="error" ng-show="form.name.$error.minlength">
+                <span class="error" ng-show="form.username.$error.minlength">
                     Too short
                 </span>
-                <span class="error" ng-show="form.name.$error.maxlength">
+                <span class="error" ng-show="form.username.$error.maxlength">
                     Too long
                 </span>
             </div>
-        </div>
-
-        <div class="row">
+            -->
+        </p>
+        <p>
             <label>Email:<input type="text" name="email" ng-model="user.email" required/></label>
-            <div role="alert">
-                <span class="error" ng-show="form.email.$error.required">
-                    Required
-                </span>
-            </div>
-        </div>
-
-        <div class="row">
+        </p>
+        <p>
             <label>Phone:<input type="text" name="phone" ng-model="user.phone"/></label>
-        </div>
-
-        <div class="row">
+        </p>
+        <p>
             <label>Website:<input type="text" name="website" ng-model="user.website"/></label>
-        </div>
+        </p>
     </div>
     <div class="ngdialog-buttons mt">
-        <button ng-disabled="subForm.$invalid" ng-click="save()">Save</button>
+        <button ng-disabled="form.$invalid" ng-click="save()">Save</button>
     </div>
 </form>

@@ -1,6 +1,7 @@
 <a href="#" ng-click="addNewUser()">Create</a>
 <table ng-table="tableParams">
     <tr ng-repeat="user in $data track by user.id">
+        <td data-title="'Id'" sortable="'id'">{{user.id}}</td>
         <td data-title="'Name'" sortable="'name'">{{user.name}}</td>
 		<td data-title="'Username'" sortable="'username'">{{user.username}}</td>
 		<td data-title="'Email'" sortable="'email'">{{user.email}}</td>
