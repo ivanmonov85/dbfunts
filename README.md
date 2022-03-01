@@ -80,8 +80,9 @@ The real message is logged in the console for troubleshooting.
 }
 ```
 ### Database and Infrastructure
-- [`PostgreSQL`](https://hub.docker.com/_/postgres) v13.6 'postgres' image from DockerHub
-- [Adminer](https://hub.docker.com/_/adminer) UI v4.7.8 used for DB management
+- [`PostgreSQL`](https://www.postgresql.org/) '[postgres](https://hub.docker.com/_/postgres)' v13.6 image from DockerHub
+- [Adminer](https://hub.docker.com/_/adminer) UI v4.7.8 imagenpm http-server
+ used for DB management
 - [Sequelize](https://sequelize.org/) v6 is used as ORM for Postgres
 
 **Note:** Database migration scripts are not automated in this release and must be run manually.
@@ -93,7 +94,7 @@ The Authorization is **automated** in the 'Get Auth Token' action which copies t
 
 
 ## Step 2. Client Implementation
-- [`AngularJS`](https://angularjs.org/) v1.8.2, using development web server (Node.js http-server).
+- [`AngularJS`](https://angularjs.org/) v1.8.2, using NPM web server [http-server](https://www.npmjs.com/package/http-server) v14.1.0 .
 Also used are: _ngRoute_, _ngStorage_, _ngDialog_, _ngTable_
 
 - Error Handling:
