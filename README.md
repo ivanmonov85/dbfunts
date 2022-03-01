@@ -72,20 +72,20 @@ The real message is logged in the console for troubleshooting.
 
 ### Database and Infrastructure
 - [`PostgreSQL`](https://hub.docker.com/_/postgres) v13.6 'postgres' image from DockerHub
-- [`Adminer`](https://hub.docker.com/_/adminer) UI v4.7.8 used for DB management
+- [Adminer](https://hub.docker.com/_/adminer) UI v4.7.8 used for DB management
 - [Sequelize](https://sequelize.org/) v6 is used as ORM for Postgres
 
 **Note:** Database migration scripts are not automated in this release and must be run manually.
 
 ### Testing
-- [`Postman`](https://www.postman.com/) v9.14 was used for testing and used collection and environment are exported in v2.1 format to the 'postman' folder.
+- [Postman](https://www.postman.com/) v9.14 was used for testing and used collection and environment are exported in v2.1 format to the 'postman' folder.
 
 The Authentication is **automated** in the 'Get Auth Token' action which copies the received token in the {{authorization}} environment variable and is used in the other actions.
 
 
 ## Step 2. Client Implementation
-- `AngularJS` v1.8.2, using development web server (Node.js http-server).
-Also used are: 'ngRoute', 'ngStorage', 'ngDialog', 'ngTable'
+- [`AngularJS`](https://angularjs.org/) v1.8.2, using development web server (Node.js http-server).
+Also used are: _ngRoute_, _ngStorage_, _ngDialog_, _ngTable_
 
 - Error Handling:
 Server error responses are handled globally, instead of per request, with registered 'responseError' interceptor to the $httpProvider.
@@ -105,5 +105,5 @@ Frontend Url:    http://localhost:8000
 
 
 #### Future Improvements (TODO)
-- Migrating from AngularJS to Angular CLI 13, if the business case is justified, as the end of life of AngularJS was December 31st, 2021.
-- Dockerize the Angular application with a NGINX server.
+- Migrating from AngularJS to [`Angular`](https://angular.io/) CLI 13, if the business case is justified, as the end of life of AngularJS was December 31st, 2021.
+- Dockerize the Angular application with a [NGINX](https://hub.docker.com/_/nginx) server.
