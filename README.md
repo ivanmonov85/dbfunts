@@ -75,6 +75,12 @@ The real message is logged in the console for troubleshooting.
 - Sequelize v6 is used as ORM for Postgres
 - **Note:** Migration scripts are not automated in this release and must be run manually.
 
+### Testing
+- `Postman` v9.14 was used for testing and used collection and environment are exported to the 'postman' folder.
+
+The Authentication is **automated** in the 'Get Auth Token' action which copies the received token in the {{authorization}} environment variable and is used in the other actions.
+
+
 ## Step 2. Client Implementation
 - `AngularJS` v1.8.2, using development web server (Node.js http-server).
 Also used are: 'ngRoute', 'ngStorage', 'ngDialog', 'ngTable'
