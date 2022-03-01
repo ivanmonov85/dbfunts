@@ -73,7 +73,7 @@ The real message is logged in the console for troubleshooting.
 ### Database
 - `Postgre`
 - Sequelize v6 is used as ORM for Postgres
-- **Note:** Migrations scrips are not automated in this release and must be run manually.
+- **Note:** Migration scripts are not automated in this release and must be run manually.
 
 ## Step 2. Client Implementation
 - `AngularJS` v1.8.2, using development web server (Node.js http-server).
