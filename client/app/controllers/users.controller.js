@@ -6,7 +6,7 @@ angular.module('users-controller', [
     'ngDialog'
 ])
 .controller('UsersController', function($scope, NgTableParams, $resource, ngDialog, env) {
-    $scope.user = {};
+    $scope.data = { user: {} };
 
 	$scope.users = $resource(env.BASE_URL + '/users/:id', { id: '@id' }, {
         // default actions - can be changed
@@ -48,22 +48,22 @@ angular.module('users-controller', [
     });
 
 	$scope.addNewUser = function() {
-        $scope.user = { name: 'John Doe', username: '', email: '', phone: '', website: '' };
+        $scope.data.user = { 
+            name: 'John Doe', 
+            username: '', 
+            email: '', 
+            phone: '', 
+            website: '' 
+        };
         $scope.openModal();
     }
 
 	$scope.editUser = function(row) {
-        $scope.user = $scope.users.get({ id: row.id });
-        $scope.openModal();
-    }
-
-	$scope.save = function() {
-        ngDialog.close('ngdialog1');
-        if (!$scope.user.id) {
-            $scope.createUser();
-        } else{
-            $scope.updateUser();
-        }
+        $scope.users.get({ id: row.id }).$promise
+        .then((result) => {
+            $scope.data.user = result;
+            $scope.openModal();
+        });
     }
 
     $scope.removeUser = function(id, name) {
@@ -74,14 +74,14 @@ angular.module('users-controller', [
 
 	$scope.createUser = function() {
 		console.log('createUser called');
-        $scope.users.save($scope.user, function() {
+        $scope.users.save($scope.data.user, function() {
 			$scope.tableParams.reload();
 		});
     }
 
 	$scope.updateUser = function() {
 		console.log('updateUser called');
-		$scope.users.update($scope.user, function() {
+		$scope.users.update($scope.data.user, function() {
 			$scope.tableParams.reload();
 		});
 	}
@@ -94,8 +94,9 @@ angular.module('users-controller', [
     }
 
     $scope.openModal = function () {
-        $scope.dialog = ngDialog.open({
+        var newClassDialog = ngDialog.open({
             template: 'components/user.dialog.html',
+            controller: 'dialogCtrl',
             scope: $scope
 
             // preCloseCallback: function(value) {
@@ -105,5 +106,23 @@ angular.module('users-controller', [
             //     return false;
             // }
         });
+
+        newClassDialog.closePromise.then(function(data) {
+            var userInfo = data.value.result;
+            var userInfo2 = $scope.data;
+            console.log(userInfo);
+            console.log(userInfo2);
+            //if (!data.user.id) {
+            //    $scope.createUser();
+            //} else{
+            //    $scope.updateUser();
+            //}
+        });
+    };
+})
+.controller('dialogCtrl', function($scope, ngDialog) {
+    var id = ngDialog.getOpenDialogs()[0];
+    $scope.save = () => {
+        ngDialog.close(id, { result: $scope.data });
     };
 });

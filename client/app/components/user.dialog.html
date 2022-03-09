@@ -1,11 +1,11 @@
 <form name="form">
     <div class="ngdialog-message">
-        <h3 id="header">{{user.username}}</h3>
+        <h3 id="header">{{data.user.username}}</h3>
         <p>
-            <label>Name:<input type="text" name="name" ng-model="user.name"/></label>
+            <label>Name: <input type="text" name="name" ng-model="data.user.name"/></label>
         </p>
         <p>
-            <label>Username:<input type="text" name="username" ng-model="user.username" required ng-minlength="3" ng-maxlength="25"/></label>
+            <label>* Username: <input type="text" name="username" ng-model="data.user.username" required ng-minlength="3" ng-maxlength="25"/></label>
             <!--
             <div role="alert">
                 <span class="error" ng-show="form.username.$error.required">
@@ -21,13 +21,13 @@
             -->
         </p>
         <p>
-            <label>Email:<input type="text" name="email" ng-model="user.email" required/></label>
+            <label>* Email: <input type="text" name="email" ng-model="data.user.email" required/></label>
         </p>
         <p>
-            <label>Phone:<input type="text" name="phone" ng-model="user.phone"/></label>
+            <label>Phone: <input type="text" name="phone" ng-model="data.user.phone"/></label>
         </p>
         <p>
-            <label>Website:<input type="text" name="website" ng-model="user.website"/></label>
+            <label>Website: <input type="text" name="website" ng-model="data.user.website"/></label>
         </p>
     </div>
     <div class="ngdialog-buttons mt">

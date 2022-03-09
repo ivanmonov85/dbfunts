@@ -73,7 +73,7 @@ The real message is logged in the console for troubleshooting.
 {
   id:        [bigint]  Unique identifier
   name:      [string]  Name
-  username:  [string]  Usaername (required)
+  username:  [string]  Username (required)
   email:     [string]  Email (required)
   phone:     [string]  Phone
   website:   [string]  Website
@@ -96,8 +96,24 @@ The Authorization is **automated** in the 'Get Auth Token' action which copies t
 - [`AngularJS`](https://angularjs.org/) v1.8.2, using NPM web server [http-server](https://www.npmjs.com/package/http-server) v14.1.0 .
 Also used modules are: [_ngRoute_](https://www.npmjs.com/package/angular-route), [_ngStorage_](https://www.npmjs.com/package/ngstorage), [_ngDialog_](https://github.com/likeastore/ngDialog), [_ngTable_](https://github.com/esvit/ng-table)
 
+Note: ngDialog is used as pre-lodaded script in index.html from external repository (cloudflare)
+https://mohistory.org/node_modules/ng-dialog/example/
+
 - Error Handling:
 Server error responses are handled globally, instead of per request, with registered 'responseError' interceptor to the $httpProvider.
+
+- Data passing options between controllers declared in the same module
+https://stackoverflow.com/questions/20181323/passing-data-between-controllers-in-angular-js
+1) using $localStorage
+2) using $broadcast-  $scope.$broadcast('SOME_TAG', 'your value'); / $scope.$on('SOME_TAG', function(response) {...}) (publish/subscribe design pattern)
+3) using $rootScope - not recommended
+4) using sessionStorage - $window.sessionStorage.setItem("Mydata",data); / $scope.data = $window.sessionStorage.getItem("Mydata");
+5) via nested service (app.factory) - if the user refreshes the page - the data is lost
+6) shared $scope.data
+7) via $watch- slow with many watches!
+8) Observer pattern
+
+https://www.toptal.com/angular-js/top-18-most-common-angularjs-developer-mistakes
 
 
 ## Step 3. Containerization
@@ -116,3 +132,69 @@ Frontend Url:    http://localhost:8000
 #### Future Improvements (TODO)
 - Migrating from AngularJS to [`Angular`](https://angular.io/) CLI 13, if the business case is justified, as the end of life of AngularJS was December 31st, 2021.
 - Dockerize the Angular application with a [NGINX](https://hub.docker.com/_/nginx) server.
+- Add toaster UI notifications
+
+
+## Commands - Backend
+
+node --version
+
+mkdir dbfunts
+cd dbfunts
+
+npm init -y
+npm i -D typescript
+npx tsc --init
+npm i -D @types/node
+
+npm i express dotenv cors helmet
+npm i -D @types/express @types/dotenv @types/cors @types/helmet
+
+npm i -D ts-node-dev
+
+### Install Postgre
+npm i pg
+npm i -D @types/pg 
+
+### Install ORM
+npm install --save sequelize
+npm i -D @types/sequelize 
+
+Start with: 
+npm run dev
+
+### Docker
+docker-compose build
+docker-compose up -d
+docker-compose down
+
+To use 'MAKE' you must have C:\mingw32\bin\make.exe to your PATH environment variables
+make up
+make down
+
+
+## Commands - Frontend
+
+### AngularJS Client App
+npm i http-server
+
+npm start
+or
+npm start-docker
+
+
+### Angular Client App
+npm install -g @angular/cli
+
+ng version
+
+ng new my-app
+
+ng build
+ng serve --open
+
+ng generate component <component-name>
+
+If you have a DockerHub account:
+docker login -u <username> -p <password>
+docker push <username>/sample-angular-app-image:latest

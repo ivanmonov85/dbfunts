@@ -13,7 +13,8 @@ var gModule = angular.module('app', [
     'ngRoute',
     'auth-service',
     'home-controller',
-    'users-controller'
+    'users-controller',
+    'dialog-test-controller'
 ])
 
 // Settings
@@ -44,6 +45,7 @@ function($httpProvider, $locationProvider, $routeProvider, ngDialogProvider) {
     $routeProvider
         .when('/home', {templateUrl: 'views/home.html', controller: 'HomeController'})
         .when('/users', {templateUrl: 'views/users.html', controller: 'UsersController'})
+        .when('/dlg', {templateUrl: 'views/dialogTest.html', controller: 'DialogViewController'})
         .otherwise({redirectTo: '/users'});
 
     // Interceptor for handling reponse error globally
